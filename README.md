@@ -16,7 +16,7 @@ npm install -g yo
 To install generator-plugin-wp from npm, run:
 
 ```bash
-npm install -g generator-plugin-wp
+npm install -g funkolector/generator-plugin-wp
 ```
 
 To use generator-plugin-wp, `cd` to your WordPress plugins folder and:
