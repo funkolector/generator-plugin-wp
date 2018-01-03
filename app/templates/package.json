@@ -20,6 +20,7 @@
 		"load-grunt-tasks": "latest",
 		"autoprefixer": "latest",
 		"babel-preset-latest": "latest",
+		"babel-core": "latest",
 		"bourbon": "latest",
 		"bourbon-neat": "latest",
 		"browser-sync": "latest",
