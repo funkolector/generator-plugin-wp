@@ -74,7 +74,7 @@ gulp.task( 'clean:styles', () =>
  * https://www.npmjs.com/package/css-mqpacker
  */
 gulp.task( 'postcss', [ 'clean:styles' ], () =>
-	gulp.src( 'assets/sass/*.scss', paths.css )
+	gulp.src( paths.sass )
 
 		// Deal with errors.
 		.pipe( plumber( {'errorHandler': handleErrors} ) )
@@ -103,7 +103,7 @@ gulp.task( 'postcss', [ 'clean:styles' ], () =>
 		.pipe( sourcemaps.write() )
 
 		// Create style.css.
-		.pipe( gulp.dest( './' ) )
+		.pipe( gulp.dest( 'assets/css' ) )
 		.pipe( browserSync.stream() )
 );
 
@@ -113,16 +113,17 @@ gulp.task( 'postcss', [ 'clean:styles' ], () =>
  * https://www.npmjs.com/package/gulp-cssnano
  */
 gulp.task( 'cssnano', [ 'postcss' ], () =>
-	gulp.src( 'style.css' )
+	gulp.src( 'assets/css/styles.css' )
 		.pipe( plumber( {'errorHandler': handleErrors} ) )
+		.pipe( sourcemaps.init())
 		.pipe( cssnano( {
 			'safe': true // Use safe optimizations.
 		} ) )
-		.pipe( rename( 'style.min.css' ) )
-		.pipe( gulp.dest( './' ) )
+		.pipe( rename( 'styles.min.css' ) )
+		.pipe( sourcemaps.write('.') )
+		.pipe( gulp.dest( 'assets/css' ) )
 		.pipe( browserSync.stream() )
 );
-
 /**
  * Delete the svg-icons.svg before we minify, concat.
  */
